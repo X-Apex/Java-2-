@@ -1,0 +1,19 @@
+import java.util.Scanner;
+public class Divisor {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Ingrese primer número: ");
+        int primero = sc.nextInt();
+        System.out.print("Ingrese segundo número: ");
+        int segundo = sc.nextInt();
+        while (primero != segundo) {
+            if (primero > segundo) {
+                primero = primero - segundo;
+            } else {
+                segundo = segundo - primero;
+            }
+        }
+        System.out.println("El MCD es: " + primero);
+        sc.close();
+    }
+}

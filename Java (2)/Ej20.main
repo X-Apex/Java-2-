@@ -1,0 +1,21 @@
+import java.util.Scanner;
+public class DecimalABinario {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Ingrese un número decimal: ");
+        int numero = sc.nextInt();
+        String binario = "";
+        int n = numero;
+        if (n == 0) {
+            binario = "0";
+        } else {
+            while (n > 0) {
+                int resto = n % 2;
+                binario = resto + binario;
+                n = n / 2;
+            }
+        }
+        System.out.println("El número " + numero + " en binario es: " + binario);
+        sc.close();
+    }
+}

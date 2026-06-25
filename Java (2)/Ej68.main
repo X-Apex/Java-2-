@@ -1,0 +1,19 @@
+public class CalcularE {
+    // Método para calcular factorial
+    public static long factorial(int n) {
+        long f = 1;
+        for (int i = 1; i <= n; i++) {
+            f *= i;
+        }
+        return f;
+    }
+    public static void main(String[] args) {
+        int n = 20; // número de términos
+        double e = 0.0;
+        for (int k = 0; k < n; k++) {
+            e += 1.0 / factorial(k);
+        }
+
+        System.out.println("Valor aproximado de e con " + n + " términos: " + e);
+    }
+} 

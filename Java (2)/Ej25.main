@@ -1,0 +1,40 @@
+import java.util.Scanner;
+public class Medias {
+    // Método para calcular la media armónica
+    public static double mediaArmonica(int[] numeros) {
+        int n = numeros.length;
+        double suma = 0.0;
+        for (int x : numeros) {
+            suma += 1.0 / x;
+        }
+        return n / suma;
+    }
+    // Método para calcular la media geométrica
+    public static double mediaGeometrica(int[] numeros) {
+        int n = numeros.length;
+        double producto = 1.0;
+        for (int x : numeros) {
+            producto *= x;
+        }
+        return Math.pow(producto, 1.0 / n);
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Ingrese la cantidad de números M: ");
+        int M = sc.nextInt();
+        int[] numeros = new int[M];
+        for (int i = 0; i < M; i++) {
+            System.out.print("Ingrese número positivo " + (i + 1) + ": ");
+            numeros[i] = sc.nextInt();
+        }
+        double armonica = mediaArmonica(numeros);
+        double geometrica = mediaGeometrica(numeros);
+        double diferencia = armonica - geometrica;
+
+        System.out.println("\nMedia armónica: " + armonica);
+        System.out.println("Media geométrica: " + geometrica);
+        System.out.println("Diferencia (Xh - Xg): " + diferencia);
+
+        sc.close();
+    }
+}

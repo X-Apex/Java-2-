@@ -1,0 +1,31 @@
+import java.util.Scanner;
+public class PotenciaFraccion {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Entrada de datos
+        System.out.print("Ingrese el número real base: ");
+        double base = sc.nextDouble();
+        System.out.print("Ingrese el numerador del exponente: ");
+        int numerador = sc.nextInt();
+        System.out.print("Ingrese el denominador del exponente: ");
+        int denominador = sc.nextInt();
+
+        // Calcular potencia base^(numerador/denominador)
+        double resultado = 1.0;
+        // Paso 1: elevar la base al numerador (multiplicación repetida)
+        for (int i = 0; i < numerador; i++) {
+            resultado *= base;
+        }
+        // Obtener la raíz correspondiente al denominador
+        // Usamos aproximación por método de Newton-Raphson
+        double raiz = resultado;
+        for (int i = 0; i < 50; i++) { // 50 iteraciones para mayor precisión
+            raiz = ((denominador - 1) * raiz + resultado / Math.pow(raiz, denominador - 1)) / denominador;
+        }
+        // Salida
+        System.out.println("El resultado de " + base + " ^ (" + numerador + "/" + denominador + ") es: " + raiz);
+
+        sc.close();
+    }
+}

@@ -1,0 +1,30 @@
+import java.util.Scanner;
+public class NumerosGemelos {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int contador = 0;
+        System.out.print("Ingrese cantidad de números a evaluar: ");
+        int n = sc.nextInt();
+        for (int i = 0; i < n; i++) {
+            System.out.print("Ingrese número: ");
+            String num = sc.next();
+
+            int longitud = num.length();
+            String parte1, parte2;
+            if (longitud % 2 == 0) {
+                int mitad = longitud / 2;
+                parte1 = num.substring(0, mitad);
+                parte2 = num.substring(mitad);
+            } else {
+                int mitad = longitud / 2;
+                parte1 = num.substring(0, mitad);
+                parte2 = num.substring(mitad + 1);
+            }
+            if (parte1.equals(parte2)) {
+                contador++;
+            }
+        }
+        System.out.println("Cantidad de números gemelos: " + contador);
+        sc.close();
+    }
+}

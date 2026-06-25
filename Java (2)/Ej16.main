@@ -1,0 +1,15 @@
+import java.util.Scanner;
+public class NumeroDigitos {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Ingrese un número positivo: ");
+        int n = sc.nextInt();
+        int contador = 0;
+        while (n > 0) {
+            n /= 10;
+            contador++;
+        }
+        System.out.println("El número tiene " + contador + " dígitos.");
+        sc.close();
+    }
+}

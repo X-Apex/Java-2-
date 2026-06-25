@@ -1,0 +1,31 @@
+import java.util.Scanner;
+public class JuegoAdivinanza2 {
+    public static void main(String[] args) {
+        final int MAXIMO = 50;
+        final int MAXINTENTOS = 3;
+        int numeroSecreto = (int)(Math.random() * MAXIMO) + 1;
+        int intentos = 0;
+        boolean acierto = false;
+
+        Scanner sc = new Scanner(System.in);
+
+        while (!acierto && intentos < MAXINTENTOS) {
+            System.out.print("Introduzca un número: ");
+            int n = sc.nextInt();
+            intentos++;
+
+            if (n == numeroSecreto) {
+                System.out.println("¡¡Acertaste!! en " + intentos + " intentos");
+                acierto = true;
+            } else if (n < numeroSecreto) {
+                System.out.println("El número es mayor");
+            } else {
+                System.out.println("El número es menor");
+            }
+        }
+        if (!acierto) {
+            System.out.println("Lo siento, ha perdido");
+        }
+        sc.close();
+    }
+}

@@ -1,0 +1,32 @@
+import java.util.Scanner;
+public class BinomialProbabilidad {
+    // Método para calcular factorial
+    public static long factorial(int n) {
+        long f = 1;
+        for (int i = 1; i <= n; i++) {
+            f *= i;
+        }
+        return f;
+    }
+    // Método para calcular la probabilidad binomial P(K)
+    public static double probabilidad(int N, int K, double p) {
+        double q = 1 - p;
+        long combinatoria = factorial(N) / (factorial(K) * factorial(N - K));
+        return combinatoria * Math.pow(p, K) * Math.pow(q, N - K);
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Ingrese N (número de ensayos): ");
+        int N = sc.nextInt();
+        System.out.print("Ingrese p (probabilidad de éxito): ");
+        double p = sc.nextDouble();
+        System.out.println("\nTabla de probabilidades binomiales:");
+        System.out.printf("%-5s %-15s%n", "K", "P(K)");
+        for (int K = 0; K <= N; K++) {
+            double pk = probabilidad(N, K, p);
+            System.out.printf("%-5d %-15.10f%n", K, pk);
+        }
+        sc.close();
+    }
+}

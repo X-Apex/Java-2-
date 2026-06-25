@@ -1,0 +1,24 @@
+import java.util.Scanner;
+public class PiramideNumerica {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Ingrese un número entero positivo n: ");
+        int n = sc.nextInt();
+        for (int fila = 1; fila <= n; fila++) {
+            // Parte ascendente
+            int valor = fila;
+            for (int j = 1; j <= fila; j++) {
+                System.out.print(valor % 10 + " ");
+                valor++;
+            }
+            // Parte descendente
+            valor -= 2;
+            for (int j = 1; j < fila; j++) {
+                System.out.print(valor % 10 + " ");
+                valor--;
+            }
+            System.out.println();
+        }
+        sc.close();
+    }
+}

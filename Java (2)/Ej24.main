@@ -1,0 +1,51 @@
+import java.util.Scanner;
+public class PrimoFibonacci {
+    // Método para verificar si un número es primo
+    public static boolean esPrimo(int n) {
+        if (n <= 1) return false;
+        for (int i = 2; i <= Math.sqrt(n); i++) {
+            if (n % i == 0) return false;
+        }
+        return true;
+    }
+    // Método para verificar si un número es Fibonacci
+    public static boolean esFibonacci(int n) {
+        // Un número es Fibonacci si 5*n^2 + 4 o 5*n^2 - 4 es un cuadrado perfecto
+        return esCuadradoPerfecto(5 * n * n + 4) || esCuadradoPerfecto(5 * n * n - 4);
+    }
+    // Método auxiliar para verificar cuadrado perfecto
+    public static boolean esCuadradoPerfecto(int x) {
+        int raiz = (int) Math.sqrt(x);
+        return raiz * raiz == x;
+    }
+    // Método para obtener la terna (anterior, número, siguiente)
+    public static void mostrarTerna(int n) {
+        int f1 = 1, f2 = 1;
+        while (f2 < n) {
+            int temp = f1 + f2;
+            f1 = f2;
+            f2 = temp;
+        }
+        if (f2 == n) {
+            System.out.println("Terna: " + f1 + ", " + f2 + ", " + (f1 + f2));
+        } else {
+            System.out.println("El número no es Fibonacci.");
+        }
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Ingrese un número natural primo: ");
+        int num = sc.nextInt();
+        if (!esPrimo(num)) {
+            System.out.println("El número ingresado no es primo.");
+        } else {
+            if (esFibonacci(num)) {
+                System.out.println(num + " es un número Fibonacci.");
+                mostrarTerna(num);
+            } else {
+                System.out.println(num + " no es un número Fibonacci.");
+            }
+        }
+        sc.close();
+    }
+}

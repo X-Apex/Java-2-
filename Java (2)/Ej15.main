@@ -1,0 +1,22 @@
+import java.util.Scanner;
+public class InterseccionIntervalos {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Ingrese intervalo [a,b]: ");
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        System.out.print("Ingrese intervalo [c,d]: ");
+        int c = sc.nextInt();
+        int d = sc.nextInt();
+
+        int inicio = Math.max(a, c);
+        int fin = Math.min(b, d);
+
+        if (inicio <= fin) {
+            System.out.println("Intersección: [" + inicio + "," + fin + "]");
+        } else {
+            System.out.println("No hay intersección.");
+        }
+        sc.close();
+    }
+}

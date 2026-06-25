@@ -1,0 +1,27 @@
+import java.util.Scanner;
+public class PuntosEnCircunferencia {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Ingrese cantidad de puntos: ");
+        int n = sc.nextInt();
+        int contador = 0;
+        for (int i = 1; i <= n; i++) {
+            System.out.print("Ingrese coordenada x del punto " + i + ": ");
+            double x = sc.nextDouble();
+            System.out.print("Ingrese coordenada y del punto " + i + ": ");
+            double y = sc.nextDouble();
+            // Circunferencia c1: centro (5,4), radio 2
+            double dist1 = Math.pow(x - 5, 2) + Math.pow(y - 4, 2);
+            boolean dentroC1 = dist1 <= Math.pow(2, 2);
+            // Circunferencia c2: centro (-5,-4), radio 3
+            double dist2 = Math.pow(x + 5, 2) + Math.pow(y + 4, 2);
+            boolean dentroC2 = dist2 <= Math.pow(3, 2);
+
+            if (dentroC1 || dentroC2) {
+                contador++;
+            }
+        }
+        System.out.println("Número de puntos dentro o en la frontera: " + contador);
+        sc.close();
+    }
+}

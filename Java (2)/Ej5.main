@@ -1,0 +1,55 @@
+import java.util.Scanner;
+public class OperacionesFracciones {
+    // Método para calcular el MCD
+    public static int mcd(int a, int b) {
+        while (b != 0) {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
+
+    // simplificar fracción
+    public static int[] simplificar(int num, int den) {
+        int divisor = mcd(Math.abs(num), Math.abs(den));
+        num /= divisor;
+        den /= divisor;
+        return new int[]{num, den};
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Ingrese numerador de la primera fracción: ");
+        int n1 = sc.nextInt();
+        System.out.print("Ingrese denominador de la primera fracción: ");
+        int d1 = sc.nextInt();
+
+        System.out.print("Ingrese numerador de la segunda fracción: ");
+        int n2 = sc.nextInt();
+        System.out.print("Ingrese denominador de la segunda fracción: ");
+        int d2 = sc.nextInt();
+
+        // Simplificar ambas fracciones
+        int[] f1 = simplificar(n1, d1);
+        int[] f2 = simplificar(n2, d2);
+
+        // Suma: (n1*d2 + n2*d1) / (d1*d2)
+        int sumaNum = f1[0] * f2[1] + f2[0] * f1[1];
+        int sumaDen = f1[1] * f2[1];
+        int[] suma = simplificar(sumaNum, sumaDen);
+
+        // Producto: (n1*n2) / (d1*d2)
+        int prodNum = f1[0] * f2[0];
+        int prodDen = f1[1] * f2[1];
+        int[] producto = simplificar(prodNum, prodDen);
+
+        System.out.println("Fracción 1 simplificada: " + f1[0] + "/" + f1[1]);
+        System.out.println("Fracción 2 simplificada: " + f2[0] + "/" + f2[1]);
+        System.out.println("Suma: " + suma[0] + "/" + suma[1]);
+        System.out.println("Producto: " + producto[0] + "/" + producto[1]);
+
+        sc.close();
+    }
+}
